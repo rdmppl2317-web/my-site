@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Marca</title>
+    <style>
+        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f0f0; }
+        #container { text-align: center; }
+        img { max-width: 300px; display: none; } /* Começa escondida para o JS mostrar */
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        // Usando JS para inserir a logo dinamicamente
+        const container = document.getElementById('container');
+        const logo = document.createElement('img');
+        logo.src = 'logo.png'; // Nome do seu arquivo de imagem
+        logo.onload = () => {
+            logo.style.display = 'block';
+            console.log("Logo carregada via JavaScript!");
+        };
+        container.appendChild(logo);
+    </script>
+</body>
+</html>
