@@ -2,26 +2,62 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Minha Marca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Aleph</title>
     <style>
-        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f0f0; }
-        #container { text-align: center; }
-        img { max-width: 300px; display: none; } /* Começa escondida para o JS mostrar */
+        /* Define o fundo preto e remove margens */
+        body {
+            background-color: #000000;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            font-family: serif; /* Ou a fonte que preferir */
+        }
+
+        /* Estilo do container que será animado */
+        #content {
+            text-align: center;
+            opacity: 0; /* Começa invisível */
+            transform: translateY(20px); /* Começa um pouco abaixo */
+            transition: opacity 2s ease-out, transform 2s ease-out; /* Define a suavidade (2 segundos) */
+        }
+
+        /* Classe que o JS vai ativar para rodar a animação */
+        .visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        img {
+            max-width: 80vw;
+            max-height: 80vh;
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
-    <div id="container"></div>
+
+    <div id="content">
+        <!-- Substitua 'logo.png' pelo nome exato do seu arquivo -->
+        <img src="logo.png" alt="Beyond Aleph Logo">
+    </div>
 
     <script>
-        // Usando JS para inserir a logo dinamicamente
-        const container = document.getElementById('container');
-        const logo = document.createElement('img');
-        logo.src = 'logo.png'; // Nome do seu arquivo de imagem
-        logo.onload = () => {
-            logo.style.display = 'block';
-            console.log("Logo carregada via JavaScript!");
+        window.onload = () => {
+            // Quando a página carregar tudo (incluindo a imagem), 
+            // o JS adiciona a classe que faz o fade-in suave
+            const content = document.getElementById('content');
+            
+            // Pequeno delay para a animação ficar mais elegante
+            setTimeout(() => {
+                content.classList.add('visible');
+            }, 500);
         };
-        container.appendChild(logo);
     </script>
 </body>
 </html>
